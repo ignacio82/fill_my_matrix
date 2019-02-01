@@ -3,10 +3,11 @@ module im_f_module
    implicit none
    contains
 
-subroutine fill_matrix(N,K,A,ncores)
-   integer, intent(in)                             :: N,K, ncores
-   integer                                         :: nn, kk
-   double precision, DIMENSION(N, K), intent(out)	:: A
+subroutine fill_matrix(N,K,A,ncores) bind(C, name="fill_")
+   use, intrinsic                                         :: iso_c_binding, only : c_double, c_int
+   integer(c_int), intent(in)                             :: N,K, ncores
+   real(c_double), DIMENSION(N, K), intent(out)	          :: A
+   integer                                                :: nn, kk
    ! Specify number of threads to use:
 	!$ call omp_set_num_threads(ncores)
 	!$omp parallel do
