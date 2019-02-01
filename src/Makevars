@@ -1,0 +1,3 @@
+PKG_FCFLAGS="-fno-stack-protector"
+F90FLAGS =  "-fopenmp"
+LDFLAGS = "-fopenmp"
