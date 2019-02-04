@@ -1,3 +1,10 @@
-PKG_FCFLAGS="-fno-stack-protector"
-F90FLAGS =  "-fopenmp"
-LDFLAGS = "-fopenmp"
+#####  Compiler flags  #####
+PKG_FCFLAGS = $(SHLIB_OPENMP_FFLAGS)
+PKG_LIBS = $(SHLIB_OPENMP_CFLAGS)
+
+#####  Phony target for R's build system to invoke  #####
+all: $(SHLIB)
+
+#####  Clean target  #####
+clean:
+	rm -f *.o *.mod
