@@ -1,9 +1,16 @@
+C_OBJS = fortmatrixc.o
+FT_OBJS = im_f_module.o
+
 #####  Compiler flags  #####
 PKG_FCFLAGS = $(SHLIB_OPENMP_FFLAGS)
 PKG_LIBS = $(SHLIB_OPENMP_CFLAGS)
 
 #####  Phony target for R's build system to invoke  #####
-all: $(SHLIB)
+all: $(SHLIB) clean
+$(SHLIB): $(FT_OBJS) $(C_OBJS)
+
+fortmatrixc.mod: im_f_module.o
+fortmatrixc.o: fortmatrixc.mod
 
 #####  Clean target  #####
 clean:
