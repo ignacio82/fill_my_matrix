@@ -11,7 +11,7 @@ extern SEXP c_fill_f(SEXP N, SEXP K, SEXP nthreads){
   SEXP ret;
   PROTECT(ret = allocVector(REALSXP, NK));
   F77_CALL(fill)(N, K, nthreads, REAL(ret));
-  UNPROTECT(1);
+  UNPROTECT(NK);
   return(ret);
 }
 
