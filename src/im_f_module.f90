@@ -1,7 +1,11 @@
 module im_f_module
    use omp_lib
+   use, intrinsic :: iso_c_binding
    implicit none
-   contains
+   private
+   public :: fill_matrix
+
+contains
 
 subroutine fill_matrix(N,K,A,nthreads) bind(C, name="fill_")
    use, intrinsic                                         :: iso_c_binding, only : c_double, c_int
