@@ -4,14 +4,14 @@
 #include <Rmath.h>
 #include <R_ext/Rdynload.h>
 
-void F77_NAME(fill)(int N, int K, int nthreads, double *ret);
+void F77_NAME(fill)(int N, int K, int nthreads, double *ret[N][K]); /// Am I doing this right??
 
 extern SEXP c_fill_f(SEXP N, SEXP K, SEXP nthreads){
-  const int NK = asInteger(N*K);
+  //const int NK = asInteger(N*K); /// How do i do this?
   SEXP ret;
-  PROTECT(ret = allocVector(REALSXP, NK));
+  //PROTECT(ret = allocVector(REALSXP, NK)); /// How do i do this?
   F77_CALL(fill)(N, K, nthreads, REAL(ret));
-  UNPROTECT(NK);
+  //UNPROTECT(NK); /// How do i do this?
   return(ret);
 }
 
