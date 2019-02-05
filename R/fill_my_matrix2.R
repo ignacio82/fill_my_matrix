@@ -1,3 +1,4 @@
+#'@export
 fillmatrix_f2 <- function(N, K, nthreads) {
   if (!is.integer(N)) {storage.mode(N) <- 'integer'}
   if (!is.integer(K)) {storage.mode(K) <- 'integer'}
